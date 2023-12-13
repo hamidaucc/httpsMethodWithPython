@@ -10,11 +10,13 @@ Steps:
 2) Refresh token if experies, https method: POST
 3) Get a list of desktop pools, https methods: GET
 """
-
+import json
+import time
+import urllib.request
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-
+from urllib.request import Request, urlopen
 api_url = "https://jsonplaceholder.typicode.com/todos/1"
 api_url2 = "https://jsonplaceholder.typicode.com/todos"
 post_api="https://conn2.gsslabs.org/rest/"
@@ -28,7 +30,7 @@ post_api="https://conn2.gsslabs.org/"
 #
 # x=session.get(post_api)
 
-
+#get token payload info
 payload={
     "domain":"gsslabs.org",
 "username":"administrator",
@@ -46,6 +48,56 @@ httpsMethod=["get","post","put","patch","delete"]
 todo = {"userId": 1, "title": "Buy milk", "completed": False}
 putTodo = {"userId": 1, "title": "Wash car", "completed": True}
 patchTodo = {"title": "Mow lawn"}
+
+#https://realpython.com/api-integration-in-python/
+
+
+def AuthApi():
+    retun
+
+def accessToken():
+    x=payload
+    token=requests.post(url, json=x)
+    time.sleep(120)# tokeen will generate after 2 hours
+    r_token=token
+    return r_token
+
+
+
+
+
+
+# Retrive an existing resource
+def getRequetes(url):
+    response=requests.get(url)
+    r=response.json()
+    p=r.text.de
+    print(p)
+
+# Create a new resource
+def postRequest(url):
+    # url will be changed here
+    x="https://jsonplaceholder.typicode.com/todos"
+    url=x
+    todo = {"userId": 1, "title": "Wash car", "completed": True}
+    response=requests.post(url, json=todo)
+    return response.json()
+
+# Update an existing resource
+def putRequest(url):
+    return
+
+# Delete a resource
+def deleteRequest(url):
+    return
+
+# Partially update an existing resource
+def patchRequest(url):
+    return
+
+url="https://www.xe.com/currencytables"
+print(getRequetes(url))
+
 for i in range(len(httpsMethod)):
     if httpsMethod[i] in y.lower() :
         if  httpsMethod[i] == "get":
